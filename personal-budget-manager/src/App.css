@@ -1,0 +1,108 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #444;
+}
+
+/* Button Styles */
+.btn {
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* Form Styles */
+.form-control {
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.form-select {
+  border-radius: 8px;
+}
+
+/* Expense List Styles */
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef;
+}
+
+/* Custom Card for Budget Summary */
+.budget-summary {
+  background-color: #e9f5ec;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.budget-summary h2 {
+  margin-bottom: 10px;
+}
+
+/* Custom Chart Container */
+.chart-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Alerts */
+.alert {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Footer */
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 14px;
+}
