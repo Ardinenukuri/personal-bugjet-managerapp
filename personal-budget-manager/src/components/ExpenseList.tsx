@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/ExpenseList.css'
 
 interface Expense {
   amount: number;
@@ -8,9 +9,11 @@ interface Expense {
 
 interface ExpenseListPageProps {
   expenses: Expense[];
+  onDelete: (index: number) => void;
+  onEdit: (index: number) => void;
 }
 
-const ExpenseListPage: React.FC<ExpenseListPageProps> = ({ expenses }) => {
+const ExpenseList: React.FC<ExpenseListPageProps> = ({ expenses, onDelete, onEdit }) => {
   return (
     <div className="container mt-4">
       <h2>Expense List</h2>
@@ -20,7 +23,25 @@ const ExpenseListPage: React.FC<ExpenseListPageProps> = ({ expenses }) => {
         <ul className="list-group">
           {expenses.map((expense, index) => (
             <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-              {expense.category}: ${expense.amount} on {expense.date}
+              <span>
+                {expense.category}: ${expense.amount} on {expense.date}
+              </span>
+              <div>
+                {/* Edit Button */}
+                <button
+                  className="btn btn-warning btn-sm me-2"
+                  onClick={() => onEdit(index)}
+                >
+                  Edit
+                </button>
+                {/* Delete Button */}
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => onDelete(index)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
@@ -29,4 +50,4 @@ const ExpenseListPage: React.FC<ExpenseListPageProps> = ({ expenses }) => {
   );
 };
 
-export default ExpenseListPage;
+export default ExpenseList;

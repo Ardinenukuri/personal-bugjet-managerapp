@@ -1,22 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import "./css/ExpenseForm.css"
 
 interface ExpenseFormProps {
   dispatch: React.Dispatch<any>;
+  editingExpense: { amount: number; date: string; category: string } | null;
+  editingIndex: number | null;
+  setEditingIndex: (index: number | null) => void;
 }
 
-const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch }) => {
+const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, editingIndex, setEditingIndex }) => {
   const [amount, setAmount] = useState<number>(0);
   const [date, setDate] = useState<string>('');
   const [category, setCategory] = useState<string>('General');
 
+  // Pre-fill the form if we are editing an existing expense
+  useEffect(() => {
+    if (editingExpense) {
+      setAmount(editingExpense.amount);
+      setDate(editingExpense.date);
+      setCategory(editingExpense.category);
+    }
+  }, [editingExpense]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Dispatch the new expense to the reducer which will also save it in localStorage
-    dispatch({
-      type: 'ADD_EXPENSE',
-      payload: { amount, date, category }
-    });
+
+    if (editingIndex !== null) {
+      // Edit existing expense
+      dispatch({
+        type: 'EDIT_EXPENSE',
+        payload: {
+          index: editingIndex,
+          updatedExpense: { amount, date, category }
+        }
+      });
+      setEditingIndex(null); // Reset after editing
+    } else {
+      // Add new expense
+      dispatch({
+        type: 'ADD_EXPENSE',
+        payload: { amount, date, category }
+      });
+    }
+
     // Reset form fields
     setAmount(0);
     setDate('');
@@ -25,7 +51,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch }) => {
 
   return (
     <div className="container mt-4">
-      <h2>Add New Expense</h2>
+      <h2>{editingIndex !== null ? 'Edit Expense' : 'Add New Expense'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="amount" className="form-label">Amount</label>
@@ -64,12 +90,13 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch }) => {
             {/* Add more categories as needed */}
           </select>
         </div>
-        <button type="submit" className="btn btn-success">Add Expense</button>
+        <button type="submit" className="btn btn-success">
+          {editingIndex !== null ? 'Update Expense' : 'Add Expense'}
+        </button>
       </form>
 
-      <div className="mt-4 d-flex justify-content-between">
-        <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
-      </div>
+      
+      
     </div>
   );
 };

@@ -12,22 +12,30 @@ interface MainPageProps {
 const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
   return (
     <div className="container">
-      <h1 className="text-center mt-4">Personal Budget Manager</h1>
+      {/* Title centered at the top of the container */}
+      <h1 className="text-center">Personal Budget Manager</h1>
 
-      {/* Navigation Links */}
-      <div className="mt-4 mb-4 d-flex justify-content-between">
-        <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
-        <Link to="/add-expense" className="btn btn-success">Add Expense</Link>
+      {/* Buttons on the left and summaries below */}
+      <div className="summary-container">
+        {/* Left-aligned buttons */}
+        <div className="button-group">
+          <Link to="/expenses-list" className="btn btn-primary">
+            View Expenses List
+          </Link>
+          <Link to="/add-expense" className="btn btn-success">
+            Add Expense
+          </Link>
+        </div>
+
+        {/* Budget Summary */}
+        <BudgetSummary budget={budget} expenses={expenses} />
+
+        {/* Expense Summary Chart */}
+        <ExpenseSummaryChart expenses={expenses} />
       </div>
 
       {/* Budget Alerts */}
       <BudgetAlerts budget={budget} expenses={expenses} />
-
-      {/* Budget Summary */}
-      <BudgetSummary budget={budget} expenses={expenses} />
-
-      {/* Expense Summary Chart */}
-      <ExpenseSummaryChart expenses={expenses} />
     </div>
   );
 };

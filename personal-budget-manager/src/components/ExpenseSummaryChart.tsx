@@ -19,7 +19,7 @@ const ExpenseSummaryChart: React.FC<ExpenseSummaryChartProps> = ({ expenses }) =
         labels: categories,
         datasets: [{
           data,
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+          backgroundColor: ['#28a745', '#0f0e0e', '#FFCE56']
         }]
       }} />
     </div>
