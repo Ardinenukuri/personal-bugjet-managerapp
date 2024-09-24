@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-interface AddExpensePageProps {
+interface ExpenseFormProps {
   dispatch: React.Dispatch<any>;
 }
 
-const AddExpensePage: React.FC<AddExpensePageProps> = ({ dispatch }) => {
+const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch }) => {
   const [amount, setAmount] = useState<number>(0);
   const [date, setDate] = useState<string>('');
   const [category, setCategory] = useState<string>('General');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Dispatch the new expense to the reducer which will also save it in localStorage
     dispatch({
       type: 'ADD_EXPENSE',
       payload: { amount, date, category }
     });
+    // Reset form fields
     setAmount(0);
     setDate('');
     setCategory('General');
@@ -66,13 +67,11 @@ const AddExpensePage: React.FC<AddExpensePageProps> = ({ dispatch }) => {
         <button type="submit" className="btn btn-success">Add Expense</button>
       </form>
 
-      <div className="mt-4 mb-4 d-flex justify-content-between">
+      <div className="mt-4 d-flex justify-content-between">
         <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
-        </div>
-          
-      
+      </div>
     </div>
   );
 };
 
-export default AddExpensePage;
+export default ExpenseForm;

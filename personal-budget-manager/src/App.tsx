@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
 import ExpenseForm from './components/ExpenseForm';
@@ -7,8 +7,11 @@ import expenseReducer from './reducers/expenseReducer';
 import './App.css';
 
 const App: React.FC = () => {
-  const [expenses, dispatch] = useReducer(expenseReducer, []);
-  const [budget] = useState(1000);  // Default budget
+  // Load saved expenses from localStorage or default to an empty array
+  const savedExpenses = JSON.parse(localStorage.getItem('expenses') || '[]');
+
+  const [expenses, dispatch] = useReducer(expenseReducer, savedExpenses);
+  const [budget] = useState(1000); // Default budget
 
   return (
     <Router>
@@ -26,7 +29,6 @@ const App: React.FC = () => {
             path="/add-expense"
             element={<ExpenseForm dispatch={dispatch} />}
           />
-        
         </Routes>
       </div>
     </Router>

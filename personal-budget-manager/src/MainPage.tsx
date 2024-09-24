@@ -14,7 +14,7 @@ const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
     <div className="container">
       <h1 className="text-center mt-4">Personal Budget Manager</h1>
 
-      {/* Links to other pages */}
+      {/* Navigation Links */}
       <div className="mt-4 mb-4 d-flex justify-content-between">
         <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
         <Link to="/add-expense" className="btn btn-success">Add Expense</Link>
@@ -26,7 +26,7 @@ const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
       {/* Budget Summary */}
       <BudgetSummary budget={budget} expenses={expenses} />
 
-      {/* Expense Summary */}
+      {/* Expense Summary Chart */}
       <ExpenseSummaryChart expenses={expenses} />
     </div>
   );
