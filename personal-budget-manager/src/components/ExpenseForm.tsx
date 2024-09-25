@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import "./css/ExpenseForm.css"
+import { Link } from 'react-router-dom';
+import "./css/ExpenseForm.css";
 
 interface ExpenseFormProps {
   dispatch: React.Dispatch<any>;
@@ -51,7 +52,15 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
 
   return (
     <div className="container mt-4">
-      <h2>{editingIndex !== null ? 'Edit Expense' : 'Add New Expense'}</h2>
+      {/* Title centered at the top */}
+      <h1 className="text-center">{editingIndex !== null ? 'Edit Expense' : 'Add New Expense'}</h1>
+
+      {/* Buttons for navigation */}
+      <div className="button-group mb-4">
+        <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
+        <Link to="/" className="btn btn-secondary">Go to Dashboard</Link>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="amount" className="form-label">Amount</label>
@@ -87,16 +96,12 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
             <option value="General">General</option>
             <option value="Food">Food</option>
             <option value="Transportation">Transportation</option>
-            {/* Add more categories as needed */}
           </select>
         </div>
         <button type="submit" className="btn btn-success">
           {editingIndex !== null ? 'Update Expense' : 'Add Expense'}
         </button>
       </form>
-
-      
-      
     </div>
   );
 };
