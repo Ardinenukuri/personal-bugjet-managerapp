@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/personal-bugjet-managerapp/personal-budget-manager/static/css/main.3800e95d.css",
+    "main.js": "/personal-bugjet-managerapp/personal-budget-manager/static/js/main.b2d7caff.js",
+    "index.html": "/personal-bugjet-managerapp/personal-budget-manager/index.html",
+    "main.3800e95d.css.map": "/personal-bugjet-managerapp/personal-budget-manager/static/css/main.3800e95d.css.map",
+    "main.b2d7caff.js.map": "/personal-bugjet-managerapp/personal-budget-manager/static/js/main.b2d7caff.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3800e95d.css",
+    "static/js/main.b2d7caff.js"
+  ]
+}
