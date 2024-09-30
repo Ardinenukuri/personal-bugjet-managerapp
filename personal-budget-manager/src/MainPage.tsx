@@ -30,13 +30,15 @@ const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
         {/* Budget Summary */}
         <BudgetSummary budget={budget} expenses={expenses} />
 
+        {/* Budget Alerts */}
+      <BudgetAlerts budget={budget} expenses={expenses} />
+    </div>
+
         {/* Expense Summary Chart */}
         <ExpenseSummaryChart expenses={expenses} />
       </div>
 
-      {/* Budget Alerts */}
-      <BudgetAlerts budget={budget} expenses={expenses} />
-    </div>
+      
   );
 };
 

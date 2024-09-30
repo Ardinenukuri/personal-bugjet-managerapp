@@ -8,23 +8,13 @@ body {
 
 .App {
   max-width: 1000px;
-  max-height: fit-content;
-  margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Container Styles */
-.container {
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Title centered inside container */
+/* Custom Title and Summary Styles */
 h1 {
   font-size: 2.5rem;
   text-align: center;
@@ -33,54 +23,22 @@ h1 {
   color: #333;
 }
 
-/* Layout for buttons and summaries */
-.summary-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Align buttons to the left */
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  align-content: space-around;
-}
-
-/* Budget Summary and Chart Styles */
-.budget-summary,
-.chart-container {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.budget-summary {
-  background-color: #e9f5ec;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.chart-container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
-
-/* Left-aligned buttons */
+/* Button Group and Layout Adjustments */
 .button-group {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
-  display: contents;
 }
 
 .btn {
-  margin-bottom: 10px;
   width: 180px;
   border-radius: 5px;
   padding: 10px 15px;
 }
 
 .btn-primary {
-  background-color: #28a745;
-  border-color: #28a745;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-success {
@@ -92,9 +50,27 @@ h1 {
   opacity: 0.9;
 }
 
-/* Responsive adjustments */
+/* Budget Summary */
+.budget-summary {
+  background-color: #e9f5ec;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chart Container */
+.chart-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .summary-container {
+  .button-group {
+    flex-direction: column;
     align-items: center;
   }
 
