@@ -1,46 +1,73 @@
-# Getting Started with Create React App
+# Personal Budget Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple React-based application that allows users to track their expenses and manage their budgets. Users can add, view, and visualize their expenses by category and set budget limits for each category.
 
-## Available Scripts
+## Table of Contents
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Core Components](#core-components)
+- [State Management](#state-management)
+- [License](#license)
 
-In the project directory, you can run:
+## Features
+- **Add Expense:** Users can input details such as amount, date, and category for each expense.
+- **View Expenses:** Display a list of all expenses, which can be filtered by category and date.
+- **Expense Summary:** Provides a visual summary of expenses in the form of a pie chart.
+- **Budget Limits:** Set budget limits for each category and display alerts when nearing the limit.
 
-### `npm start`
+## Technology Stack
+- **React:** Front-end JavaScript framework
+- **TypeScript:** Static typing for better development experience
+- **Chart.js:** Used for creating the expense summary chart
+- **React Hooks:** `useState`, `useReducer` for state management
+- **CSS:** For styling the components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone the repository:
 
-### `npm test`
+    ```bash
+    git clone https://github.com/your-username/personal-budget-manager.git
+    cd personal-budget-manager
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
 
-### `npm run build`
+    ```bash
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Run the app:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    npm start
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app will be available at [http://localhost:3000](http://localhost:3000).
 
-### `npm run eject`
+## Usage
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Add Expense:** Click on the "Add Expense" form to add the expense details, including amount, date, and category.
+- **View Expenses:** Scroll down to see a list of all expenses.
+- **Visual Summary:** A pie chart will display a summary of the expenses by category.
+- **Budget Alerts:** When your total spending in a category reaches 80% of the budget limit, a warning message will appear.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Core Components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- **ExpenseForm.tsx:** Component for adding expenses.
+- **ExpenseList.tsx:** Displays the list of all added expenses.
+- **BudgetSummary.tsx:** Shows total budget and total spending.
+- **BudgetAlerts.tsx:** Displays alerts when expenses exceed the budget limit.
+- **ExpenseSummaryChart.tsx:** Visualizes expenses by category using a pie chart.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## State Management
 
-## Learn More
+- **useState:** Manages simple state, such as budget and input fields.
+- **useReducer:** Manages complex state, like the list of expenses and handling budget limits.
+- **Reducer Logic:** The app uses a reducer to handle adding expenses to the list and managing total expenses for each category.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

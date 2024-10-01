@@ -1,7 +1,9 @@
 {
-  "homepage": "https://Ardinenukuri.github.io/personal-budget-managerapp",
+ 
   "name": "personal-budget-manager",
   "version": "0.1.0",
+  "homepage": "/personal-bugjet-managerapp/",
+
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
