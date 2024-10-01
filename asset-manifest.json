@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/personal-budget-managerapp/static/css/main.2ce17e11.css",
-    "main.js": "/personal-budget-managerapp/static/js/main.f09a0ab7.js",
-    "index.html": "/personal-budget-managerapp/index.html",
-    "main.2ce17e11.css.map": "/personal-budget-managerapp/static/css/main.2ce17e11.css.map",
-    "main.f09a0ab7.js.map": "/personal-budget-managerapp/static/js/main.f09a0ab7.js.map"
+    "main.css": "/personal-bugjet-managerapp/static/css/main.2ce17e11.css",
+    "main.js": "/personal-bugjet-managerapp/static/js/main.f09a0ab7.js",
+    "index.html": "/personal-bugjet-managerapp/index.html",
+    "main.2ce17e11.css.map": "/personal-bugjet-managerapp/static/css/main.2ce17e11.css.map",
+    "main.f09a0ab7.js.map": "/personal-bugjet-managerapp/static/js/main.f09a0ab7.js.map"
   },
   "entrypoints": [
     "static/css/main.2ce17e11.css",
