@@ -13,9 +13,11 @@ A simple React-based application that allows users to track their expenses and m
 
 ## Features
 - **Add Expense:** Users can input details such as amount, date, and category for each expense.
+- **Add Category:** Users can create and manage new categories for their expenses.
 - **View Expenses:** Display a list of all expenses, which can be filtered by category and date.
 - **Expense Summary:** Provides a visual summary of expenses in the form of a pie chart.
 - **Budget Limits:** Set budget limits for each category and display alerts when nearing the limit.
+- **Change Budget:** Users can change their budget at any time, with updates saved to local storage.
 - **Data Persistence:** All expenses and budget settings are stored in local storage, ensuring data retention between browser sessions.
 
 ## Technology Stack
@@ -58,6 +60,8 @@ The application is live and deployed using GitHub Pages. You can access the app 
 ## Usage
 
 - **Add Expense:** Click on the "Add Expense" form to input details such as amount, date, and category.
+- **Add Category:** Use the designated section in the app to create new categories for your expenses.
+- **Change Budget:** Update your budget in the budget settings, and it will be saved automatically.
 - **View Expenses:** Scroll down to see a list of all expenses.
 - **Visual Summary:** A pie chart displays a summary of expenses by category.
 - **Budget Alerts:** When your total spending in a category reaches 80% of the budget limit, a warning message will appear.
