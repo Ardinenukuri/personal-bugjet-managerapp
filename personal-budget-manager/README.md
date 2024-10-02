@@ -1,6 +1,6 @@
 # Personal Budget Manager
 
-A simple React-based application that allows users to track their expenses and manage their budgets. Users can add, view, and visualize their expenses by category and set budget limits for each category.
+A simple React-based application that allows users to track their expenses and manage their budgets. Users can add, view, and visualize their expenses by category and set budget limits for each category. The app persists data using local storage, ensuring that expenses and budgets are retained even after closing the browser.
 
 ## Table of Contents
 - [Features](#features)
@@ -16,13 +16,15 @@ A simple React-based application that allows users to track their expenses and m
 - **View Expenses:** Display a list of all expenses, which can be filtered by category and date.
 - **Expense Summary:** Provides a visual summary of expenses in the form of a pie chart.
 - **Budget Limits:** Set budget limits for each category and display alerts when nearing the limit.
+- **Data Persistence:** All expenses and budget settings are stored in local storage, ensuring data retention between browser sessions.
 
 ## Technology Stack
 - **React:** Front-end JavaScript framework
-- **TypeScript:** Static typing for better development experience
+- **TypeScript:** Static typing for a better development experience
 - **Chart.js:** Used for creating the expense summary chart
 - **React Hooks:** `useState`, `useReducer` for state management
 - **CSS:** For styling the components
+- **Bootstrap:** For responsive design and styling
 
 ## Installation
 
@@ -47,11 +49,17 @@ A simple React-based application that allows users to track their expenses and m
 
 The app will be available at [http://localhost:3000](http://localhost:3000).
 
+## Deployment
+
+The application is live and deployed using GitHub Pages. You can access the app at the following link:
+
+🔗 *[Live Demo](https://managerapp.netlify.app/)*
+
 ## Usage
 
-- **Add Expense:** Click on the "Add Expense" form to add the expense details, including amount, date, and category.
+- **Add Expense:** Click on the "Add Expense" form to input details such as amount, date, and category.
 - **View Expenses:** Scroll down to see a list of all expenses.
-- **Visual Summary:** A pie chart will display a summary of the expenses by category.
+- **Visual Summary:** A pie chart displays a summary of expenses by category.
 - **Budget Alerts:** When your total spending in a category reaches 80% of the budget limit, a warning message will appear.
 
 ## Core Components

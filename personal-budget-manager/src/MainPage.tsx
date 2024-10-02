@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // Remove useState if not used
 import { Link } from 'react-router-dom';
 import BudgetSummary from './components/BudgetSummary';
 import ExpenseSummaryChart from './components/ExpenseSummaryChart';
@@ -7,17 +7,15 @@ import BudgetAlerts from './components/BudgetAlerts';
 interface MainPageProps {
   budget: number;
   expenses: { amount: number; date: string; category: string }[];
+  onBudgetChange: (newBudget: number) => void; // Ensure this is defined
 }
 
-const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
+const MainPage: React.FC<MainPageProps> = ({ budget, expenses, onBudgetChange }) => {
   return (
     <div className="container">
-      {/* Title centered at the top of the container */}
       <h1 className="text-center">Personal Budget Manager</h1>
 
-      {/* Buttons on the left and summaries below */}
       <div className="summary-container">
-        {/* Left-aligned buttons */}
         <div className="button-group">
           <Link to="/expenses-list" className="btn btn-primary">
             View Expenses List
@@ -27,18 +25,13 @@ const MainPage: React.FC<MainPageProps> = ({ budget, expenses }) => {
           </Link>
         </div>
 
-        {/* Budget Summary */}
-        <BudgetSummary budget={budget} expenses={expenses} />
+        {/* Pass onBudgetChange to BudgetSummary */}
+        <BudgetSummary budget={budget} expenses={expenses} onBudgetChange={onBudgetChange} />
 
-        {/* Budget Alerts */}
-      <BudgetAlerts budget={budget} expenses={expenses} />
-    </div>
-
-        {/* Expense Summary Chart */}
+        <BudgetAlerts budget={budget} expenses={expenses} />
         <ExpenseSummaryChart expenses={expenses} />
       </div>
-
-      
+    </div>
   );
 };
 

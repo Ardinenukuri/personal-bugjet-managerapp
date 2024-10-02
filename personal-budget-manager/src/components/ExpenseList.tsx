@@ -17,10 +17,8 @@ interface ExpenseListPageProps {
 const ExpenseList: React.FC<ExpenseListPageProps> = ({ expenses, onDelete, onEdit }) => {
   return (
     <div className="container mt-4">
-      {/* Title centered at the top */}
       <h1 className="text-center">Expense List</h1>
 
-      {/* Buttons for navigation */}
       <div className="button-group mb-4">
         <Link to="/add-expense" className="btn btn-success">Add New Expense</Link>
         <Link to="/" className="btn btn-secondary">Go to Dashboard</Link>

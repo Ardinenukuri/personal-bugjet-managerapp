@@ -13,8 +13,27 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
   const [amount, setAmount] = useState<number>(0);
   const [date, setDate] = useState<string>('');
   const [category, setCategory] = useState<string>('General');
+  const [newCategory, setNewCategory] = useState<string>('');
+  const [color, setColor] = useState<string>('#ffffff');
+  const [showNewCategoryFields, setShowNewCategoryFields] = useState<boolean>(false); // Toggle for new category fields
 
-  // Pre-fill the form if we are editing an existing expense
+  const [categories, setCategories] = useState<{ name: string, color: string }[]>(() => {
+    const savedCategories = localStorage.getItem('categories');
+    if (savedCategories) {
+      console.log('Retrieved categories from localStorage:', savedCategories); // Log the retrieved data
+      return JSON.parse(savedCategories);
+    } else {
+      const defaultCategories = [
+        { name: 'General', color: '#28a745' },
+        { name: 'Food', color: '#ffcc00' },
+        { name: 'Transportation', color: '#FFCE56' }
+      ];
+      localStorage.setItem('categories', JSON.stringify(defaultCategories)); // Save default categories if none found
+      console.log('Saved default categories to localStorage:', defaultCategories); // Log the default categories
+      return defaultCategories;
+    }
+  });
+
   useEffect(() => {
     if (editingExpense) {
       setAmount(editingExpense.amount);
@@ -23,11 +42,16 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
     }
   }, [editingExpense]);
 
+  // Save categories to localStorage whenever they are updated
+  useEffect(() => {
+    console.log('Saving categories to localStorage:', categories); // Log the categories before saving
+    localStorage.setItem('categories', JSON.stringify(categories));
+  }, [categories]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (editingIndex !== null) {
-      // Edit existing expense
       dispatch({
         type: 'EDIT_EXPENSE',
         payload: {
@@ -35,9 +59,8 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
           updatedExpense: { amount, date, category }
         }
       });
-      setEditingIndex(null); // Reset after editing
+      setEditingIndex(null);
     } else {
-      // Add new expense
       dispatch({
         type: 'ADD_EXPENSE',
         payload: { amount, date, category }
@@ -50,12 +73,30 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
     setCategory('General');
   };
 
+  const handleAddCategory = () => {
+    if (newCategory && color) {
+      const updatedCategories = [...categories, { name: newCategory, color }];
+      setCategories(updatedCategories);
+      console.log('Added new category:', { name: newCategory, color }); // Log the newly added category
+      setNewCategory('');
+      setColor('#ffffff');
+      setShowNewCategoryFields(false); // Hide new category fields after adding
+    }
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategory = e.target.value;
+    if (selectedCategory === 'addNew') {
+      setShowNewCategoryFields(true);
+    } else {
+      setCategory(selectedCategory);
+      setShowNewCategoryFields(false);
+    }
+  };
+
   return (
     <div className="container mt-4">
-      {/* Title centered at the top */}
       <h1 className="text-center">{editingIndex !== null ? 'Edit Expense' : 'Add New Expense'}</h1>
-
-      {/* Buttons for navigation */}
       <div className="button-group mb-4">
         <Link to="/expenses-list" className="btn btn-primary">View Expenses List</Link>
         <Link to="/" className="btn btn-secondary">Go to Dashboard</Link>
@@ -74,6 +115,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
             required
           />
         </div>
+
         <div className="mb-3">
           <label htmlFor="date" className="form-label">Date</label>
           <input
@@ -85,19 +127,52 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
             required
           />
         </div>
+
         <div className="mb-3">
           <label htmlFor="category" className="form-label">Category</label>
           <select
             className="form-select"
             id="category"
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={handleCategoryChange}
           >
-            <option value="General">General</option>
-            <option value="Food">Food</option>
-            <option value="Transportation">Transportation</option>
+            {categories.map((cat) => (
+              <option key={cat.name} value={cat.name}>{cat.name}</option>
+            ))}
+            <option value="addNew">Add New Category</option>
           </select>
         </div>
+
+        {/* Show new category fields if 'Add New Category' is selected */}
+        {showNewCategoryFields && (
+          <>
+            <div className="mb-3">
+              <label htmlFor="newCategory" className="form-label">New Category</label>
+              <input
+                type="text"
+                className="form-control"
+                id="newCategory"
+                value={newCategory}
+                onChange={(e) => setNewCategory(e.target.value)}
+                placeholder="Enter new category"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="color" className="form-label">Category Color</label>
+              <input
+                type="color"
+                className="form-control"
+                id="color"
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+                required
+              />
+            </div>
+            <button type="button" className="btn btn-info mb-3" onClick={handleAddCategory}>Add Category</button>
+          </>
+        )}
+
         <button type="submit" className="btn btn-success">
           {editingIndex !== null ? 'Update Expense' : 'Add Expense'}
         </button>

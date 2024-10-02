@@ -6,9 +6,10 @@ interface ExpenseSummaryChartProps {
 }
 
 const ExpenseSummaryChart: React.FC<ExpenseSummaryChartProps> = ({ expenses }) => {
-  const categories = ['General', 'Food', 'Transportation'];  // Add more categories as needed
-  const data = categories.map(category => {
-    return expenses.filter(expense => expense.category === category)
+  const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+
+  const data = categories.map((category: { name: string }) => {
+    return expenses.filter(expense => expense.category === category.name)
                    .reduce((total, expense) => total + expense.amount, 0);
   });
 
@@ -16,10 +17,10 @@ const ExpenseSummaryChart: React.FC<ExpenseSummaryChartProps> = ({ expenses }) =
     <div>
       <h2>Expense Summary</h2>
       <Pie data={{
-        labels: categories,
+        labels: categories.map((category: { name: string }) => category.name),
         datasets: [{
           data,
-          backgroundColor: ['#28a745', '#0f0e0e', '#FFCE56']
+          backgroundColor: categories.map((category: { color: string }) => category.color)
         }]
       }} />
     </div>
