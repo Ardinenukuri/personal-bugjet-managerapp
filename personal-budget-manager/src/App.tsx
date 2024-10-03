@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useReducer, useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import MainPage from './MainPage';
@@ -9,22 +8,22 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App: React.FC = () => {
-  // Retrieve expenses and budget from local storage
+  
   const savedExpenses = JSON.parse(localStorage.getItem('expenses') || '[]');
   const savedBudget = JSON.parse(localStorage.getItem('budget') || '1000');
   
   const [expenses, dispatch] = useReducer(expenseReducer, savedExpenses);
-  const [budget, setBudget] = useState(savedBudget); // Initialize budget with saved value
+  const [budget, setBudget] = useState(savedBudget); 
   const [editingExpense, setEditingExpense] = useState<{ amount: number; date: string; category: string } | null>(null);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const navigate = useNavigate();
 
-  // Update local storage whenever expenses change
+  
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses));
   }, [expenses]);
 
-  // Update local storage whenever the budget changes
+  
   useEffect(() => {
     localStorage.setItem('budget', JSON.stringify(budget));
   }, [budget]);

@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f6f8;
@@ -14,7 +13,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Custom Title and Summary Styles */
+
 h1 {
   font-size: 2.5rem;
   text-align: center;
@@ -23,7 +22,7 @@ h1 {
   color: #333;
 }
 
-/* Button Group and Layout Adjustments */
+
 .button-group {
   display: flex;
   justify-content: space-between;
@@ -50,7 +49,7 @@ h1 {
   opacity: 0.9;
 }
 
-/* Budget Summary */
+
 .budget-summary {
   background-color: #e9f5ec;
   padding: 20px;
@@ -58,7 +57,7 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Chart Container */
+
 .chart-container {
   background-color: #ffffff;
   padding: 20px;
@@ -67,7 +66,7 @@ h1 {
   margin-top: 20px;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .button-group {
     flex-direction: column;

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 interface BudgetSummaryProps {
   budget: number;
   expenses: { amount: number }[];
-  onBudgetChange: (newBudget: number) => void; // Function to handle budget change
+  onBudgetChange: (newBudget: number) => void; 
 }
 
 const BudgetSummary: React.FC<BudgetSummaryProps> = ({ budget, expenses, onBudgetChange }) => {

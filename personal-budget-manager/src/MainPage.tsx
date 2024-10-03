@@ -1,4 +1,4 @@
-import React from 'react'; // Remove useState if not used
+import React from 'react'; 
 import { Link } from 'react-router-dom';
 import BudgetSummary from './components/BudgetSummary';
 import ExpenseSummaryChart from './components/ExpenseSummaryChart';
@@ -7,7 +7,7 @@ import BudgetAlerts from './components/BudgetAlerts';
 interface MainPageProps {
   budget: number;
   expenses: { amount: number; date: string; category: string }[];
-  onBudgetChange: (newBudget: number) => void; // Ensure this is defined
+  onBudgetChange: (newBudget: number) => void; 
 }
 
 const MainPage: React.FC<MainPageProps> = ({ budget, expenses, onBudgetChange }) => {

@@ -15,12 +15,12 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
   const [category, setCategory] = useState<string>('General');
   const [newCategory, setNewCategory] = useState<string>('');
   const [color, setColor] = useState<string>('#ffffff');
-  const [showNewCategoryFields, setShowNewCategoryFields] = useState<boolean>(false); // Toggle for new category fields
+  const [showNewCategoryFields, setShowNewCategoryFields] = useState<boolean>(false); 
 
   const [categories, setCategories] = useState<{ name: string, color: string }[]>(() => {
     const savedCategories = localStorage.getItem('categories');
     if (savedCategories) {
-      console.log('Retrieved categories from localStorage:', savedCategories); // Log the retrieved data
+      console.log('Retrieved categories from localStorage:', savedCategories); 
       return JSON.parse(savedCategories);
     } else {
       const defaultCategories = [
@@ -28,8 +28,8 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
         { name: 'Food', color: '#ffcc00' },
         { name: 'Transportation', color: '#FFCE56' }
       ];
-      localStorage.setItem('categories', JSON.stringify(defaultCategories)); // Save default categories if none found
-      console.log('Saved default categories to localStorage:', defaultCategories); // Log the default categories
+      localStorage.setItem('categories', JSON.stringify(defaultCategories)); 
+      console.log('Saved default categories to localStorage:', defaultCategories); 
       return defaultCategories;
     }
   });
@@ -42,9 +42,9 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
     }
   }, [editingExpense]);
 
-  // Save categories to localStorage whenever they are updated
+
   useEffect(() => {
-    console.log('Saving categories to localStorage:', categories); // Log the categories before saving
+    console.log('Saving categories to localStorage:', categories); 
     localStorage.setItem('categories', JSON.stringify(categories));
   }, [categories]);
 
@@ -67,7 +67,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
       });
     }
 
-    // Reset form fields
+    
     setAmount(0);
     setDate('');
     setCategory('General');
@@ -77,10 +77,10 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ dispatch, editingExpense, edi
     if (newCategory && color) {
       const updatedCategories = [...categories, { name: newCategory, color }];
       setCategories(updatedCategories);
-      console.log('Added new category:', { name: newCategory, color }); // Log the newly added category
+      console.log('Added new category:', { name: newCategory, color }); 
       setNewCategory('');
       setColor('#ffffff');
-      setShowNewCategoryFields(false); // Hide new category fields after adding
+      setShowNewCategoryFields(false); 
     }
   };
 
