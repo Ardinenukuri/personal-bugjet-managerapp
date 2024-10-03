@@ -55,7 +55,7 @@ The app will be available at [http://localhost:3000](http://localhost:3000).
 
 The application is live and deployed using GitHub Pages. You can access the app at the following link:
 
-🔗 *[Live Demo](https://managerapp.netlify.app/)*
+🔗 *[Live Demo](https://melodious-frangipane-f03bf4.netlify.app/)*
 
 ## Usage
 
